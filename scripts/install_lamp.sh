@@ -12,7 +12,7 @@ apt upgrade -y
 # instalamos  el servidor web apache
 apt install apache2 -y
 
-#copiasmos nuestro archivo de configuracion de VirtualHost
+#copiamos nuestro archivo de configuracion de VirtualHost
 cp ../conf/000-default.conf /etc/apache2/sites-available
 
 # Instalamos los paquetes necesarios para tener PHP
@@ -26,3 +26,10 @@ systemctl restart apache2
 # Copiar el archivo php/index.php a /var/www/html
 
 cp ../php/index.php /var/www/html
+
+# modificamos el propietario del directorio /var/www/html
+chown -R www-data:www-data /var/www/html
+
+
+# instalamos MySQL server
+apt  install mysql-server -y
